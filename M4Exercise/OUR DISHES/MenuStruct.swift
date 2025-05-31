@@ -1,7 +1,7 @@
 import Foundation
 
 struct JSONMenu: Codable {
-    var menuItems: [MenuItem] = []
+    var menu: [MenuItem] = []
 }
 
 

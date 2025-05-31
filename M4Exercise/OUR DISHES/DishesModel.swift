@@ -15,7 +15,7 @@ class DishesModel: ObservableObject {
         do {
             let (data, _) = try await urlSession.data(from: url)
             let fullMenu = try JSONDecoder().decode(JSONMenu.self, from: data)
-            menuItems = fullMenu.menuItems
+            menuItems = fullMenu.menu
             
             
             // populate Core Data
