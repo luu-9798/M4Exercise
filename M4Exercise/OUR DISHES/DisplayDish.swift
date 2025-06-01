@@ -13,15 +13,23 @@ struct DisplayDish: View {
     }
     
     var body: some View {
-        HStack {
-            Text(dish.name ?? "")
-            Spacer()
-            Text(String(format: "$%.2f", dish.price))
-                .font(.callout)
-                .monospaced()
+        VStack {
+            HStack{
+                Text(dish.name ?? "")
+                  .padding([.top, .bottom], 7)
+
+                Spacer()
+
+                Text(dish.formatPrice())
+                  .monospaced()
+                  .font(.callout)
+            }
+
+            HStack {
+                Text(dish.size ?? "")
+                Spacer()
+            }
         }
-        .contentShape(Rectangle()) // Keep this line for tappable area
-        .padding(.vertical, 4)
     }
 }
 
