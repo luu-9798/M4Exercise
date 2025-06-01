@@ -12,9 +12,16 @@ struct DisplayDish: View {
         self.dish = dish
     }
     
-    var body: some View {        
-        EmptyView()
-        .contentShape(Rectangle()) // keep this code
+    var body: some View {
+        HStack {
+            Text(dish.name ?? "")
+            Spacer()
+            Text(String(format: "$%.2f", dish.price))
+                .font(.callout)
+                .monospaced()
+        }
+        .contentShape(Rectangle()) // Keep this line for tappable area
+        .padding(.vertical, 4)
     }
 }
 
