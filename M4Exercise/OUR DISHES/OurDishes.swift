@@ -25,7 +25,7 @@ struct OurDishes: View {
             
             NavigationView {
                 FetchedObjects(
-                    predicate:buildPredicate(),
+                    predicate: buildPredicate(),
                     sortDescriptors: buildSortDescriptors()) {
                         (dishes: [Dish]) in
                         List {
@@ -34,6 +34,7 @@ struct OurDishes: View {
                                 DisplayDish(dish).onTapGesture {showAlert.toggle()}
                             }
                         }
+                        .searchable(text: $searchText)
                         // add the search bar modifier here
                     }
             }
@@ -58,6 +59,17 @@ struct OurDishes: View {
                        await dishesModel.reload(viewContext)
                    }
             
+        }
+    }
+    
+    func buildPredicate() -> NSPredicate {
+        if searchText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+            return NSPredicate(value: true) // no filtering
+        } else {
+            return NSPredicate(
+                format: "name CONTAINS[cd] %@",
+                searchText
+            )
         }
     }
 }
