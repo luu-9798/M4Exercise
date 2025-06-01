@@ -17,7 +17,7 @@ extension Dish {
                 continue  // Skip if price is not convertible
             }
             
-            let dish = Dish()
+            let dish = Dish(context: context)
             dish.name = item.title                // Map title to name
             dish.price = priceValue               // Map price as-is (if still a String)
             dish.size = "Regular"
