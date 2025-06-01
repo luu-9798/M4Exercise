@@ -30,6 +30,9 @@ struct OurDishes: View {
                         (dishes: [Dish]) in
                         List {
                             // Code for the list enumeration here
+                            ForEach(dishes, id: \.self) { dish in
+                                DisplayDish(dish).onTapGesture {showAlert.toggle()}
+                            }
                         }
                         // add the search bar modifier here
                     }
