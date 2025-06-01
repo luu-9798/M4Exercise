@@ -72,6 +72,16 @@ struct OurDishes: View {
             )
         }
     }
+    
+    func buildSortDescriptors() -> [NSSortDescriptor] {
+        return [
+            NSSortDescriptor(
+                key: "name",
+                ascending: true,
+                selector: #selector(NSString.localizedStandardCompare(_:))
+            )
+        ]
+    }
 }
 
 struct OurDishes_Previews: PreviewProvider {
